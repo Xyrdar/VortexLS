@@ -4,17 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090911">
+  <meta name="theme-color" content="#0a0a0d">
+  <meta name="description" content="Portal de Vortex LS, comunidad de GTA V Roleplay para PS5.">
   <title>Vortex LS | Portal Oficial</title>
 
   <style>
     :root {
-      --bg: #090911;
-      --panel: #12121e;
+      --bg: #0a0a0d;
+      --panel: #131318;
+      --panel-light: #19191f;
+      --red: #e32636;
+      --red-bright: #ff394b;
+      --red-dark: #861522;
       --purple: #9875ff;
-      --text: #f7f5ff;
-      --muted: #aaa7bf;
-      --border: #29253d;
+      --text: #f7f5f5;
+      --muted: #aaa7b0;
+      --border: #30252a;
     }
 
     * {
@@ -34,70 +39,139 @@
       text-decoration: none;
     }
 
+    /* BARRA DE NAVEGACIÓN SUPERIOR */
+
     .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       min-height: 76px;
-      padding: 18px 7%;
+      padding: 16px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      gap: 24px;
       border-bottom: 1px solid var(--border);
-      background: rgba(9, 9, 17, 0.96);
+      border-top: 2px solid var(--red);
+      background: rgba(10, 10, 13, 0.96);
+      backdrop-filter: blur(14px);
     }
 
     .brand {
+      flex-shrink: 0;
       font-size: 23px;
       font-weight: 900;
       letter-spacing: 2px;
     }
 
     .brand span {
-      color: var(--purple);
+      color: var(--red);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
     }
 
     .nav-links {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 24px;
       color: var(--muted);
       font-size: 14px;
     }
 
-    .nav-links a:hover {
-      color: var(--purple);
+    .nav-links a {
+      transition: color 0.2s;
     }
 
+    .nav-links a:hover {
+      color: var(--red-bright);
+    }
+
+    .nav-discord {
+      display: inline-block;
+      padding: 11px 16px;
+      border: 1px solid var(--red);
+      border-radius: 7px;
+      background: var(--red);
+      color: white;
+      font-size: 13px;
+      font-weight: bold;
+      white-space: nowrap;
+      transition: 0.2s;
+    }
+
+    .nav-discord:hover {
+      background: var(--red-bright);
+      transform: translateY(-2px);
+    }
+
+    /* PORTADA */
+
     .hero {
-      min-height: 500px;
-      padding: 100px 7% 90px;
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      padding: 110px 7% 100px;
       text-align: center;
       background:
-        radial-gradient(ellipse at 50% 0%, #382365 0%, transparent 55%),
-        linear-gradient(180deg, #11101e 0%, var(--bg) 100%);
+        radial-gradient(
+          ellipse at 50% 0%,
+          rgba(227, 38, 54, 0.22) 0%,
+          transparent 58%
+        ),
+        radial-gradient(
+          ellipse at 90% 55%,
+          rgba(152, 117, 255, 0.06),
+          transparent 40%
+        ),
+        linear-gradient(180deg, #151216 0%, var(--bg) 100%);
       border-bottom: 1px solid var(--border);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 180px;
+      height: 2px;
+      transform: translateX(-50%);
+      background: var(--red);
+      box-shadow: 0 0 28px rgba(227, 38, 54, 0.7);
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 900px;
+      margin: auto;
     }
 
     .eyebrow {
       display: inline-block;
-      padding: 8px 13px;
-      border: 1px solid #55417f;
+      padding: 9px 14px;
+      border: 1px solid rgba(227, 38, 54, 0.5);
       border-radius: 30px;
-      color: #c8b9ff;
-      background: #211833;
+      color: #ff9ca5;
+      background: rgba(227, 38, 54, 0.09);
       font-size: 11px;
       font-weight: bold;
       letter-spacing: 2px;
     }
 
     h1 {
-      margin: 24px 0 16px;
-      font-size: clamp(44px, 8vw, 82px);
+      margin: 26px 0 18px;
+      font-size: clamp(42px, 7.5vw, 82px);
       line-height: 1.04;
       letter-spacing: -3px;
     }
 
     h1 span {
-      color: var(--purple);
+      color: var(--red);
+      text-shadow: 0 0 35px rgba(227, 38, 54, 0.18);
     }
 
     .hero p {
@@ -109,7 +183,7 @@
     }
 
     .actions {
-      margin-top: 30px;
+      margin-top: 32px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -119,25 +193,33 @@
     .button {
       display: inline-block;
       padding: 14px 20px;
-      border: 1px solid var(--purple);
-      border-radius: 8px;
-      background: var(--purple);
-      color: #100b20;
+      border: 1px solid var(--red);
+      border-radius: 7px;
+      background: var(--red);
+      color: white;
       font-size: 14px;
       font-weight: bold;
       transition: 0.2s;
     }
 
     .button:hover {
+      background: var(--red-bright);
+      border-color: var(--red-bright);
       transform: translateY(-2px);
-      filter: brightness(1.12);
     }
 
     .button-outline {
       background: transparent;
       color: var(--text);
-      border-color: #49405f;
+      border-color: #494047;
     }
+
+    .button-outline:hover {
+      background: rgba(227, 38, 54, 0.08);
+      border-color: var(--red);
+    }
+
+    /* SECCIONES GENERALES */
 
     .container {
       width: min(1100px, 86%);
@@ -145,15 +227,16 @@
     }
 
     section.content {
-      padding: 72px 0;
+      padding: 76px 0;
+      scroll-margin-top: 90px;
     }
 
     .section-top {
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
     .section-label {
-      color: var(--purple);
+      color: var(--red-bright);
       font-size: 11px;
       font-weight: bold;
       letter-spacing: 2px;
@@ -167,9 +250,49 @@
 
     .description {
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.8;
       max-width: 650px;
     }
+
+    /* ESTADO DE LA CIUDAD */
+
+    .status-panel {
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      border-radius: 10px;
+      background:
+        linear-gradient(110deg, rgba(227, 38, 54, 0.06), transparent 50%),
+        var(--panel);
+    }
+
+    .status-panel h3 {
+      margin: 0 0 8px;
+    }
+
+    .status-panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .status-tag {
+      flex-shrink: 0;
+      display: inline-block;
+      padding: 9px 12px;
+      border: 1px solid rgba(227, 38, 54, 0.45);
+      border-radius: 30px;
+      background: rgba(227, 38, 54, 0.09);
+      color: #ff9ca5;
+      font-size: 12px;
+    }
+
+    /* TARJETAS DE SISTEMAS */
 
     .grid {
       display: grid;
@@ -178,22 +301,41 @@
     }
 
     .card {
-      padding: 25px;
-      min-height: 190px;
+      position: relative;
+      overflow: hidden;
+      padding: 26px;
+      min-height: 195px;
       border: 1px solid var(--border);
-      border-radius: 13px;
-      background: linear-gradient(145deg, #161525, #101019);
-      transition: border-color 0.2s, transform 0.2s;
+      border-radius: 10px;
+      background: linear-gradient(145deg, #19171b, #111115);
+      transition: border-color 0.25s, transform 0.25s,
+                  background 0.25s;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--red);
+      transition: width 0.25s;
     }
 
     .card:hover {
-      border-color: #7358b9;
-      transform: translateY(-3px);
+      border-color: rgba(227, 38, 54, 0.65);
+      transform: translateY(-4px);
+      background: linear-gradient(145deg, #20171b, #111115);
+    }
+
+    .card:hover::before {
+      width: 100%;
     }
 
     .card-icon {
-      font-size: 27px;
-      margin-bottom: 17px;
+      font-size: 28px;
+      margin-bottom: 18px;
     }
 
     .card h3 {
@@ -205,61 +347,45 @@
       margin: 0;
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
-    .status-panel {
-      padding: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      background: var(--panel);
-    }
-
-    .status-panel h3 {
-      margin: 0 0 8px;
-    }
-
-    .status-panel p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .status-tag {
-      flex-shrink: 0;
-      padding: 9px 12px;
-      border: 1px solid #55417f;
-      border-radius: 30px;
-      background: #211833;
-      color: #d4c8ff;
-      font-size: 12px;
-    }
+    /* NORMATIVA */
 
     .rules {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      background: #0d0d17;
+      background: #0e0e12;
     }
 
     .cta {
-      padding: 42px 25px;
+      position: relative;
+      overflow: hidden;
+      padding: 45px 25px;
       text-align: center;
-      border: 1px solid #44345f;
-      border-radius: 16px;
-      background: radial-gradient(ellipse at top, #292044, #12121e 75%);
+      border: 1px solid #49252b;
+      border-radius: 12px;
+      background:
+        radial-gradient(
+          ellipse at top,
+          rgba(227, 38, 54, 0.16),
+          transparent 70%
+        ),
+        var(--panel);
+    }
+
+    .cta h2 {
+      margin-top: 0;
     }
 
     .cta p {
       max-width: 570px;
       margin: 0 auto 24px;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.8;
     }
+
+    /* PIE DE PÁGINA */
 
     footer {
       padding: 30px 7%;
@@ -267,31 +393,74 @@
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 15px;
-      color: #8f8ba5;
+      color: #8f8a94;
       font-size: 12px;
     }
 
-    @media (max-width: 760px) {
+    footer strong {
+      color: var(--red);
+    }
+
+    /* DISEÑO PARA TABLETS Y MÓVILES */
+
+    @media (max-width: 850px) {
       .navbar {
-        flex-direction: column;
+        padding: 16px 5%;
+        gap: 18px;
+      }
+
+      .nav-right {
+        gap: 16px;
       }
 
       .nav-links {
-        justify-content: center;
         gap: 15px;
-      }
-
-      .hero {
-        padding: 75px 6%;
       }
 
       .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+    }
+
+    @media (max-width: 650px) {
+      .navbar {
+        position: relative;
+        flex-direction: column;
+        gap: 16px;
+        padding: 18px 5%;
+      }
+
+      .nav-right {
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 17px;
+      }
+
+      .nav-discord {
+        text-align: center;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 78px 6%;
+      }
+
+      h1 {
+        letter-spacing: -1.5px;
+      }
 
       .status-panel {
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      section.content {
+        padding: 58px 0;
       }
     }
 
@@ -304,8 +473,44 @@
         width: 88%;
       }
 
-      h1 {
-        letter-spacing: -1.5px;
+      .nav-links {
+        gap: 12px;
+        font-size: 13px;
+      }
+
+      .brand {
+        font-size: 22px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        text-align: center;
+      }
+
+      .card {
+        min-height: auto;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
       }
     }
   </style>
@@ -313,31 +518,55 @@
 
 <body>
   <header class="navbar">
-    <a class="brand" href="#inicio">VORTEX <span>LS</span></a>
+    <a class="brand" href="#inicio" aria-label="Vortex LS, inicio">
+      VORTEX <span>LS</span>
+    </a>
 
-    <nav class="nav-links">
-      <a href="#inicio">Inicio</a>
-      <a href="#ciudad">La ciudad</a>
-      <a href="#sistemas">Sistemas</a>
-      <a href="#normas">Normativa</a>
-    </nav>
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#ciudad">La ciudad</a>
+        <a href="#sistemas">Sistemas</a>
+        <a href="#normas">Normativa</a>
+      </nav>
+
+      <!-- Enlace provisional: sustituir por la URL de invitación
+           o el inicio de sesión real cuando estén configurados. -->
+      <a
+        class="nav-discord"
+        href="https://discord.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Discord ↗
+      </a>
+    </div>
   </header>
 
   <main>
     <section class="hero" id="inicio">
-      <div class="eyebrow">LOS SANTOS · ROLEPLAY PS5</div>
+      <div class="hero-content">
+        <div class="eyebrow">LOS SANTOS · ROLEPLAY PS5</div>
 
-      <h1>UNA CIUDAD.<br><span>MILES DE HISTORIAS.</span></h1>
+        <h1>
+          UNA CIUDAD.<br>
+          <span>MILES DE HISTORIAS.</span>
+        </h1>
 
-      <p>
-        Bienvenido a Vortex LS. Construye tu historia,
-        encuentra tu lugar en la ciudad y forma parte
-        de una comunidad de roleplay.
-      </p>
+        <p>
+          Bienvenido a Vortex LS. Construye tu historia,
+          encuentra tu lugar en la ciudad y forma parte
+          de una comunidad de roleplay.
+        </p>
 
-      <div class="actions">
-        <a class="button" href="#sistemas">Explorar la plataforma ↗</a>
-        <a class="button button-outline" href="#normas">Consultar normativa</a>
+        <div class="actions">
+          <a class="button" href="#sistemas">
+            Explorar la plataforma ↗
+          </a>
+          <a class="button button-outline" href="#normas">
+            Consultar normativa
+          </a>
+        </div>
       </div>
     </section>
 
@@ -355,7 +584,9 @@
         <div class="status-panel">
           <div>
             <h3>Vortex Los Santos</h3>
-            <p>La conexión con el servidor todavía no está configurada.</p>
+            <p>
+              La conexión con el servidor todavía no está configurada.
+            </p>
           </div>
           <span class="status-tag">◈ En configuración</span>
         </div>
@@ -377,37 +608,49 @@
           <article class="card">
             <div class="card-icon">🪪</div>
             <h3>Ciudadanos y DNI</h3>
-            <p>Fichas de personaje e identificación ciudadana.</p>
+            <p>
+              Fichas de personaje e identificación ciudadana.
+            </p>
           </article>
 
           <article class="card">
             <div class="card-icon">🚔</div>
             <h3>Departamento de Policía</h3>
-            <p>Denuncias, investigaciones, multas, vehículos y expedientes.</p>
+            <p>
+              Denuncias, investigaciones, multas, vehículos y expedientes.
+            </p>
           </article>
 
           <article class="card">
             <div class="card-icon">📋</div>
             <h3>Solicitudes</h3>
-            <p>Gestión de solicitudes CK, PKT y otros trámites.</p>
+            <p>
+              Gestión de solicitudes CK, PKT y otros trámites.
+            </p>
           </article>
 
           <article class="card">
             <div class="card-icon">⚖️</div>
             <h3>Leyes y normativa</h3>
-            <p>Leyes IC, normas generales y código penal de la ciudad.</p>
+            <p>
+              Leyes IC, normas generales y código penal de la ciudad.
+            </p>
           </article>
 
           <article class="card">
             <div class="card-icon">💰</div>
             <h3>Economía y trabajos</h3>
-            <p>Futuros sistemas de dinero, empleos, rangos y turnos.</p>
+            <p>
+              Futuros sistemas de dinero, empleos, rangos y turnos.
+            </p>
           </article>
 
           <article class="card">
             <div class="card-icon">🚘</div>
             <h3>Vehículos</h3>
-            <p>Registro y administración de vehículos de roleplay.</p>
+            <p>
+              Registro y administración de vehículos de roleplay.
+            </p>
           </article>
         </div>
       </div>

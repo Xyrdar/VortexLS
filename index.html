@@ -1,1 +1,233 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d14">
+  <title>Vortex LS | GTA V Roleplay</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0d14;
+      color: #f5f5f7;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 8%;
+      background: #111521;
+      border-bottom: 1px solid #292e40;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #9b87ff;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color: #dddfea;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #9b87ff;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 80px;
+      background: radial-gradient(ellipse at top, #29204f, #0b0d14 70%);
+    }
+
+    .tag {
+      color: #b7aaff;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 76px);
+      margin: 20px 0;
+    }
+
+    h1 span {
+      color: #9b87ff;
+    }
+
+    .hero p {
+      color: #b8bdce;
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 620px;
+      margin: 0 auto 30px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #8065f5;
+      color: white;
+      padding: 14px 23px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 6px;
+    }
+
+    .button.secondary {
+      background: transparent;
+      border: 1px solid #5b547d;
+    }
+
+    section {
+      padding: 55px 8%;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: #aab0c3;
+      line-height: 1.6;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .card {
+      background: #141927;
+      border: 1px solid #292e40;
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .card h3 {
+      color: #b7aaff;
+      margin-top: 0;
+    }
+
+    .card p {
+      color: #b8bdce;
+      line-height: 1.6;
+    }
+
+    .status {
+      display: inline-block;
+      color: #e4dcff;
+      background: #30264f;
+      border: 1px solid #57458d;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 15px;
+      border-top: 1px solid #292e40;
+      color: #9299ad;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 0 7px;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">VORTEX LS</div>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#sistemas">Sistemas</a>
+      <a href="#normas">Normas</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="tag">Los Santos · GTA V Roleplay · PS5</div>
+      <h1>Tu historia.<br><span>Tu ciudad.</span></h1>
+      <p>
+        Bienvenido a Vortex LS, tu plataforma de roleplay.
+        Consulta las normas, conoce los sistemas de la ciudad
+        y prepárate para escribir tu propia historia.
+      </p>
+      <a class="button" href="#sistemas">Explorar la plataforma</a>
+      <a class="button secondary" href="#normas">Leer las normas</a>
+    </section>
+
+    <section id="sistemas">
+      <h2>Sistemas de la ciudad</h2>
+      <p class="subtitle">
+        Estamos preparando las herramientas para gestionar tu experiencia de roleplay.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Ciudadanos</h3>
+          <p>Fichas de personaje y DNI para identificar a los ciudadanos de Los Santos.</p>
+        </article>
+
+        <article class="card">
+          <h3>Policía</h3>
+          <p>Registro de vehículos, multas, denuncias, investigaciones y expedientes.</p>
+        </article>
+
+        <article class="card">
+          <h3>Solicitudes</h3>
+          <p>Un espacio para solicitudes CK, PKT y otros trámites de roleplay.</p>
+        </article>
+
+        <article class="card">
+          <h3>Economía y trabajos</h3>
+          <p>Preparado para futuros sistemas de dinero, empleos, rangos y vehículos.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="normas">
+      <h2>Normas de Vortex LS</h2>
+      <p class="subtitle">
+        Las normas generales y las leyes IC se añadirán aquí.
+        Antes de publicar la plataforma, incorporaremos las reglas oficiales de tu servidor.
+      </p>
+      <span class="status">Plataforma en construcción</span>
+    </section>
+  </main>
+
+  <footer>
+    Vortex LS · GTA V Roleplay PS5 · Proyecto comunitario no oficial
+  </footer>
+</body>
+</html>
+

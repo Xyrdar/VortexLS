@@ -4,230 +4,442 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b0d14">
-  <title>Vortex LS | GTA V Roleplay</title>
+  <meta name="theme-color" content="#090911">
+  <title>Vortex LS | Portal Oficial</title>
+
   <style>
+    :root {
+      --bg: #090911;
+      --panel: #12121e;
+      --purple: #9875ff;
+      --text: #f7f5ff;
+      --muted: #aaa7bf;
+      --border: #29253d;
+    }
+
     * {
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0d14;
-      color: #f5f5f7;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    header {
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .navbar {
+      min-height: 76px;
+      padding: 18px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 22px 8%;
-      background: #111521;
-      border-bottom: 1px solid #292e40;
+      gap: 20px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 9, 17, 0.96);
     }
 
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-      color: #9b87ff;
+    .brand {
+      font-size: 23px;
+      font-weight: 900;
       letter-spacing: 2px;
     }
 
-    nav a {
-      color: #dddfea;
-      text-decoration: none;
-      margin-left: 20px;
+    .brand span {
+      color: var(--purple);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      color: var(--muted);
       font-size: 14px;
     }
 
-    nav a:hover {
-      color: #9b87ff;
+    .nav-links a:hover {
+      color: var(--purple);
     }
 
     .hero {
+      min-height: 500px;
+      padding: 100px 7% 90px;
       text-align: center;
-      padding: 100px 20px 80px;
-      background: radial-gradient(ellipse at top, #29204f, #0b0d14 70%);
+      background:
+        radial-gradient(ellipse at 50% 0%, #382365 0%, transparent 55%),
+        linear-gradient(180deg, #11101e 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
     }
 
-    .tag {
-      color: #b7aaff;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 12px;
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 13px;
+      border: 1px solid #55417f;
+      border-radius: 30px;
+      color: #c8b9ff;
+      background: #211833;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
     }
 
     h1 {
-      font-size: clamp(42px, 8vw, 76px);
-      margin: 20px 0;
+      margin: 24px 0 16px;
+      font-size: clamp(44px, 8vw, 82px);
+      line-height: 1.04;
+      letter-spacing: -3px;
     }
 
     h1 span {
-      color: #9b87ff;
+      color: var(--purple);
     }
 
     .hero p {
-      color: #b8bdce;
-      font-size: 18px;
-      line-height: 1.7;
       max-width: 620px;
-      margin: 0 auto 30px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
     }
 
     .button {
       display: inline-block;
-      background: #8065f5;
-      color: white;
-      padding: 14px 23px;
+      padding: 14px 20px;
+      border: 1px solid var(--purple);
       border-radius: 8px;
-      text-decoration: none;
+      background: var(--purple);
+      color: #100b20;
+      font-size: 14px;
       font-weight: bold;
-      margin: 6px;
+      transition: 0.2s;
     }
 
-    .button.secondary {
+    .button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.12);
+    }
+
+    .button-outline {
       background: transparent;
-      border: 1px solid #5b547d;
+      color: var(--text);
+      border-color: #49405f;
     }
 
-    section {
-      padding: 55px 8%;
+    .container {
+      width: min(1100px, 86%);
+      margin: auto;
+    }
+
+    section.content {
+      padding: 72px 0;
+    }
+
+    .section-top {
+      margin-bottom: 28px;
+    }
+
+    .section-label {
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     h2 {
-      font-size: 30px;
-      margin-bottom: 12px;
+      margin: 10px 0;
+      font-size: clamp(27px, 4vw, 36px);
     }
 
-    .subtitle {
-      color: #aab0c3;
-      line-height: 1.6;
+    .description {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 650px;
     }
 
-    .cards {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-      margin-top: 28px;
     }
 
     .card {
-      background: #141927;
-      border: 1px solid #292e40;
-      border-radius: 12px;
-      padding: 24px;
+      padding: 25px;
+      min-height: 190px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: linear-gradient(145deg, #161525, #101019);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: #7358b9;
+      transform: translateY(-3px);
+    }
+
+    .card-icon {
+      font-size: 27px;
+      margin-bottom: 17px;
     }
 
     .card h3 {
-      color: #b7aaff;
-      margin-top: 0;
+      margin: 0 0 10px;
+      font-size: 18px;
     }
 
     .card p {
-      color: #b8bdce;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .status-panel {
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: var(--panel);
+    }
+
+    .status-panel h3 {
+      margin: 0 0 8px;
+    }
+
+    .status-panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
       line-height: 1.6;
     }
 
-    .status {
-      display: inline-block;
-      color: #e4dcff;
-      background: #30264f;
-      border: 1px solid #57458d;
-      padding: 8px 12px;
-      border-radius: 20px;
-      font-size: 13px;
+    .status-tag {
+      flex-shrink: 0;
+      padding: 9px 12px;
+      border: 1px solid #55417f;
+      border-radius: 30px;
+      background: #211833;
+      color: #d4c8ff;
+      font-size: 12px;
+    }
+
+    .rules {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: #0d0d17;
+    }
+
+    .cta {
+      padding: 42px 25px;
+      text-align: center;
+      border: 1px solid #44345f;
+      border-radius: 16px;
+      background: radial-gradient(ellipse at top, #292044, #12121e 75%);
+    }
+
+    .cta p {
+      max-width: 570px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+      line-height: 1.7;
     }
 
     footer {
-      text-align: center;
-      padding: 28px 15px;
-      border-top: 1px solid #292e40;
-      color: #9299ad;
-      font-size: 13px;
+      padding: 30px 7%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 15px;
+      color: #8f8ba5;
+      font-size: 12px;
     }
 
-    @media (max-width: 600px) {
-      header {
+    @media (max-width: 760px) {
+      .navbar {
         flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: center;
         gap: 15px;
       }
 
-      nav a {
-        margin: 0 7px;
+      .hero {
+        padding: 75px 6%;
       }
 
-      .hero {
-        padding-top: 70px;
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .status-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        width: 88%;
+      }
+
+      h1 {
+        letter-spacing: -1.5px;
       }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="logo">VORTEX LS</div>
-    <nav>
+  <header class="navbar">
+    <a class="brand" href="#inicio">VORTEX <span>LS</span></a>
+
+    <nav class="nav-links">
       <a href="#inicio">Inicio</a>
+      <a href="#ciudad">La ciudad</a>
       <a href="#sistemas">Sistemas</a>
-      <a href="#normas">Normas</a>
+      <a href="#normas">Normativa</a>
     </nav>
   </header>
 
   <main>
     <section class="hero" id="inicio">
-      <div class="tag">Los Santos · GTA V Roleplay · PS5</div>
-      <h1>Tu historia.<br><span>Tu ciudad.</span></h1>
+      <div class="eyebrow">LOS SANTOS · ROLEPLAY PS5</div>
+
+      <h1>UNA CIUDAD.<br><span>MILES DE HISTORIAS.</span></h1>
+
       <p>
-        Bienvenido a Vortex LS, tu plataforma de roleplay.
-        Consulta las normas, conoce los sistemas de la ciudad
-        y prepárate para escribir tu propia historia.
-      </p>
-      <a class="button" href="#sistemas">Explorar la plataforma</a>
-      <a class="button secondary" href="#normas">Leer las normas</a>
-    </section>
-
-    <section id="sistemas">
-      <h2>Sistemas de la ciudad</h2>
-      <p class="subtitle">
-        Estamos preparando las herramientas para gestionar tu experiencia de roleplay.
+        Bienvenido a Vortex LS. Construye tu historia,
+        encuentra tu lugar en la ciudad y forma parte
+        de una comunidad de roleplay.
       </p>
 
-      <div class="cards">
-        <article class="card">
-          <h3>Ciudadanos</h3>
-          <p>Fichas de personaje y DNI para identificar a los ciudadanos de Los Santos.</p>
-        </article>
-
-        <article class="card">
-          <h3>Policía</h3>
-          <p>Registro de vehículos, multas, denuncias, investigaciones y expedientes.</p>
-        </article>
-
-        <article class="card">
-          <h3>Solicitudes</h3>
-          <p>Un espacio para solicitudes CK, PKT y otros trámites de roleplay.</p>
-        </article>
-
-        <article class="card">
-          <h3>Economía y trabajos</h3>
-          <p>Preparado para futuros sistemas de dinero, empleos, rangos y vehículos.</p>
-        </article>
+      <div class="actions">
+        <a class="button" href="#sistemas">Explorar la plataforma ↗</a>
+        <a class="button button-outline" href="#normas">Consultar normativa</a>
       </div>
     </section>
 
-    <section id="normas">
-      <h2>Normas de Vortex LS</h2>
-      <p class="subtitle">
-        Las normas generales y las leyes IC se añadirán aquí.
-        Antes de publicar la plataforma, incorporaremos las reglas oficiales de tu servidor.
-      </p>
-      <span class="status">Plataforma en construcción</span>
+    <section class="content" id="ciudad">
+      <div class="container">
+        <div class="section-top">
+          <div class="section-label">Centro de operaciones</div>
+          <h2>Estado de la ciudad</h2>
+          <p class="description">
+            Aquí consultaremos la información de la ciudad
+            cuando conectemos los sistemas y los datos reales.
+          </p>
+        </div>
+
+        <div class="status-panel">
+          <div>
+            <h3>Vortex Los Santos</h3>
+            <p>La conexión con el servidor todavía no está configurada.</p>
+          </div>
+          <span class="status-tag">◈ En configuración</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="content" id="sistemas">
+      <div class="container">
+        <div class="section-top">
+          <div class="section-label">Herramientas de roleplay</div>
+          <h2>Tu ciudad, tus sistemas</h2>
+          <p class="description">
+            Una plataforma central para gestionar personajes,
+            departamentos y trámites de la comunidad.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">🪪</div>
+            <h3>Ciudadanos y DNI</h3>
+            <p>Fichas de personaje e identificación ciudadana.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🚔</div>
+            <h3>Departamento de Policía</h3>
+            <p>Denuncias, investigaciones, multas, vehículos y expedientes.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">📋</div>
+            <h3>Solicitudes</h3>
+            <p>Gestión de solicitudes CK, PKT y otros trámites.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⚖️</div>
+            <h3>Leyes y normativa</h3>
+            <p>Leyes IC, normas generales y código penal de la ciudad.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">💰</div>
+            <h3>Economía y trabajos</h3>
+            <p>Futuros sistemas de dinero, empleos, rangos y turnos.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🚘</div>
+            <h3>Vehículos</h3>
+            <p>Registro y administración de vehículos de roleplay.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content rules" id="normas">
+      <div class="container">
+        <div class="section-top">
+          <div class="section-label">Información oficial</div>
+          <h2>Normativa de Vortex LS</h2>
+          <p class="description">
+            Aquí publicaremos las reglas oficiales del servidor,
+            las leyes IC y los procedimientos de cada departamento.
+          </p>
+        </div>
+
+        <div class="cta">
+          <h2>El roleplay comienza contigo.</h2>
+          <p>
+            Estamos preparando las secciones oficiales de la ciudad.
+            Próximamente incorporaremos los documentos y herramientas
+            de gestión.
+          </p>
+          <span class="status-tag">Plataforma en desarrollo</span>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
-    Vortex LS · GTA V Roleplay PS5 · Proyecto comunitario no oficial
+    <div>© Vortex LS · Comunidad de GTA V Roleplay PS5</div>
+    <div>Proyecto comunitario no oficial</div>
   </footer>
 </body>
 </html>
-

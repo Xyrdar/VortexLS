@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0a0a0d">
-  <meta name="description" content="Portal oficial de Vortex LS, comunidad de GTA V Roleplay para PS5.">
+  <meta name="description" content="Portal de Vortex LS, comunidad de GTA V Roleplay para PS5.">
   <title>Vortex LS | Portal Oficial</title>
 
   <style>
@@ -317,6 +317,17 @@
       color: var(--green);
     }
 
+    .department.organizaciones {
+      border-left-color: var(--purple);
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(152,117,255,.13), transparent 55%),
+        linear-gradient(145deg, #19171f, #111115);
+    }
+
+    .department.organizaciones .card-link {
+      color: #b9a4ff;
+    }
+
     .private-note {
       display: inline-block;
       margin: 2px 0 14px;
@@ -528,7 +539,7 @@
         <p>
           Bienvenido a Vortex LS. Construye tu historia,
           encuentra tu lugar en la ciudad y forma parte
-          de nuestra comunidad de roleplay.
+          de nuestra comunidad.
         </p>
 
         <div class="actions">
@@ -571,6 +582,7 @@
         </div>
 
         <div class="grid">
+
           <!-- SAPD -->
           <article class="card department" id="sapd">
             <div class="card-icon">🛡️</div>
@@ -622,6 +634,30 @@
             <span class="card-link">Panel SAMS · Próximamente</span>
           </article>
 
+          <!-- ORGANIZACIONES -->
+          <article class="card department organizaciones" id="organizaciones">
+            <div class="card-icon">🤝</div>
+            <h3>Organizaciones</h3>
+            <div class="department-name">Gestión de organizaciones de la ciudad</div>
+            <p>
+              Espacio para administrar organizaciones,
+              sus miembros, jerarquías y actividades.
+            </p>
+
+            <div class="features-title">Sistemas de organizaciones</div>
+            <div class="feature-list">
+              <div class="feature"><span>👥</span>Registro de miembros</div>
+              <div class="feature"><span>🎖️</span>Jerarquías y rangos</div>
+              <div class="feature"><span>📋</span>Información y registros</div>
+              <div class="feature"><span>📅</span>Actividades y reuniones</div>
+              <div class="feature"><span>📦</span>Inventario de la organización</div>
+              <div class="feature"><span>🔐</span>Gestión de responsables</div>
+            </div>
+
+            <span class="card-link">Panel de organizaciones · Próximamente</span>
+          </article>
+
+          <!-- SOLICITUDES -->
           <article class="card" id="solicitudes">
             <div class="card-icon">📋</div>
             <h3>Solicitudes</h3>
@@ -632,6 +668,7 @@
             <span class="card-link">Sistema en preparación</span>
           </article>
 
+          <!-- NORMATIVA -->
           <article class="card" id="normativa-card">
             <div class="card-icon">📜</div>
             <h3>Normativa</h3>
@@ -642,25 +679,17 @@
             <a class="card-link" href="#normas">Consultar normativa ↗</a>
           </article>
 
+          <!-- EMPRESAS -->
           <article class="card" id="empresas">
             <div class="card-icon">🏢</div>
             <h3>Empresas</h3>
             <p>
               Negocios de la ciudad, propietarios, empleados,
-              cargos y futura gestión económica.
+              cargos y gestión empresarial.
             </p>
             <span class="card-link">Sistema de empresas · Futuro</span>
           </article>
 
-          <article class="card" id="organizaciones">
-            <div class="card-icon">🤝</div>
-            <h3>Organizaciones</h3>
-            <p>
-              Gestión de organizaciones de la ciudad,
-              miembros, jerarquías y otros datos.
-            </p>
-            <span class="card-link">Sistema de organizaciones · Futuro</span>
-          </article>
         </div>
       </div>
     </section>

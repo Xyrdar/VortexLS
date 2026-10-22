@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0a0a0d">
-  <meta name="description" content="Portal oficial de Vortex LS, comunidad de GTA V Roleplay para PS5.">
+  <meta name="description" content="Portal oficial de Vortex LS, comunidad de GTA V Roleplay PS5.">
   <title>Vortex LS | Portal Oficial</title>
 
   <style>
@@ -15,6 +15,7 @@
       --red: #e32636;
       --red-bright: #ff394b;
       --purple: #9875ff;
+      --green: #55d6a0;
       --text: #f7f5f5;
       --muted: #aaa7b0;
       --border: #30252a;
@@ -68,7 +69,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
     }
 
     .nav-links {
@@ -227,7 +228,7 @@
 
     .status-tag {
       display: inline-block;
-      padding: 9px 12px;
+      padding: 8px 11px;
       border: 1px solid rgba(227,38,54,.45);
       border-radius: 30px;
       background: rgba(227,38,54,.09);
@@ -292,26 +293,33 @@
 
     .card-link {
       display: inline-block;
-      margin-top: 18px;
+      margin-top: 17px;
       color: var(--red-bright);
       font-size: 13px;
       font-weight: bold;
     }
 
-    .sapd {
+    .department {
       border-left: 3px solid var(--red);
       background:
-        radial-gradient(ellipse at 100% 0%, rgba(227,38,54,.13), transparent 55%),
+        radial-gradient(ellipse at 100% 0%, rgba(227,38,54,.12), transparent 55%),
         linear-gradient(145deg, #19171b, #111115);
     }
 
-    .sapd .card-icon {
-      color: var(--red-bright);
+    .department.sams {
+      border-left-color: var(--green);
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(85,214,160,.1), transparent 55%),
+        linear-gradient(145deg, #171b1a, #111115);
+    }
+
+    .department.sams .card-link {
+      color: var(--green);
     }
 
     .private-note {
       display: inline-block;
-      margin: 0 0 13px;
+      margin: 2px 0 14px;
       padding: 6px 9px;
       border: 1px solid rgba(227,38,54,.45);
       border-radius: 20px;
@@ -319,27 +327,42 @@
       font-size: 11px;
     }
 
-    .sapd-features {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 22px;
+    .department-name {
+      margin: -3px 0 12px;
+      color: #ddd8e0;
+      font-size: 13px;
+      line-height: 1.6;
     }
 
-    .sapd-feature {
-      padding: 12px;
+    .features-title {
+      margin: 22px 0 10px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #e8e2e8;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .feature {
+      padding: 11px;
       border: 1px solid var(--border);
       border-radius: 7px;
-      background: rgba(10,10,13,.5);
+      background: rgba(10,10,13,.48);
       color: #dedbe2;
-      font-size: 13px;
+      font-size: 12px;
       line-height: 1.5;
     }
 
-    .sapd-feature span {
+    .feature span {
       display: block;
-      margin-bottom: 5px;
-      color: var(--red-bright);
+      margin-bottom: 4px;
+      font-size: 17px;
     }
 
     .rules {
@@ -381,14 +404,14 @@
       color: var(--red);
     }
 
-    @media (max-width: 850px) {
+    @media (max-width: 900px) {
       .navbar {
         padding: 16px 5%;
       }
 
       .nav-right,
       .nav-links {
-        gap: 14px;
+        gap: 13px;
       }
 
       .grid {
@@ -437,7 +460,7 @@
 
     @media (max-width: 480px) {
       .grid,
-      .sapd-features {
+      .feature-list {
         grid-template-columns: 1fr;
       }
 
@@ -484,7 +507,7 @@
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#inicio">Inicio</a>
         <a href="#ciudad">La ciudad</a>
-        <a href="#sistemas">Sistemas</a>
+        <a href="#sistemas">Departamentos</a>
         <a href="#normas">Normativa</a>
       </nav>
 
@@ -539,65 +562,64 @@
     <section class="content" id="sistemas">
       <div class="container">
         <div class="section-top">
-          <div class="section-label">Herramientas de roleplay</div>
-          <h2>Tu ciudad, tus sistemas</h2>
+          <div class="section-label">Departamentos y sistemas</div>
+          <h2>La estructura de Vortex LS</h2>
           <p class="description">
-            Una plataforma central para los departamentos,
-            personajes y trámites de Vortex LS.
+            Cada departamento tendrá sus propias herramientas,
+            personal y permisos dentro de la plataforma.
           </p>
         </div>
 
         <div class="grid">
-          <!-- El registro de ciudadanos forma parte del SAPD,
-               no es una sección pública independiente. -->
-          <article class="card sapd" id="sapd">
+          <!-- SAPD: todos los registros policiales están agrupados aquí. -->
+          <article class="card department" id="sapd">
             <div class="card-icon">🛡️</div>
             <h3>SAPD</h3>
-            <p><strong>San Andreas Police Department</strong></p>
-            <div style="margin-top: 12px;">
-              <span class="private-note">🔒 Área policial restringida</span>
-            </div>
+            <div class="department-name">San Andreas Police Department</div>
+            <span class="private-note">🔒 Área policial restringida</span>
             <p>
-              Gestión policial, expedientes, investigaciones,
-              denuncias y administración del departamento.
+              Departamento encargado de la seguridad,
+              las investigaciones y los registros oficiales de la ciudad.
             </p>
 
-            <div class="sapd-features">
-              <div class="sapd-feature">
-                <span>🗂️</span>
-                Registro de ciudadanos
-              </div>
-              <div class="sapd-feature">
-                <span>📄</span>
-                Informes y denuncias
-              </div>
-              <div class="sapd-feature">
-                <span>🔎</span>
-                Investigaciones
-              </div>
-              <div class="sapd-feature">
-                <span>⚖️</span>
-                Multas y condenas
-              </div>
-              <div class="sapd-feature">
-                <span>🪪</span>
-                Licencias y DNI
-              </div>
-              <div class="sapd-feature">
-                <span>🚘</span>
-                Registro de vehículos
-              </div>
-              <div class="sapd-feature">
-                <span>📚</span>
-                Código penal
-              </div>
-              <div class="sapd-feature">
-                <span>🎖️</span>
-                Rangos y personal
-              </div>
+            <div class="features-title">Sistemas internos SAPD</div>
+            <div class="feature-list">
+              <div class="feature"><span>🗂️</span>Registro de ciudadanos y DNI</div>
+              <div class="feature"><span>🚘</span>Registro de vehículos</div>
+              <div class="feature"><span>🏠</span>Registro de propiedades</div>
+              <div class="feature"><span>📄</span>Informes policiales</div>
+              <div class="feature"><span>⚠️</span>Denuncias</div>
+              <div class="feature"><span>🔎</span>Investigaciones</div>
+              <div class="feature"><span>⚖️</span>Multas y condenas</div>
+              <div class="feature"><span>🪪</span>Licencias</div>
+              <div class="feature"><span>📚</span>Código penal</div>
+              <div class="feature"><span>🎖️</span>Rangos y personal</div>
             </div>
 
             <span class="card-link">Panel SAPD · Próximamente</span>
+          </article>
+
+          <!-- SAMS: departamento médico independiente. -->
+          <article class="card department sams" id="sams">
+            <div class="card-icon">🚑</div>
+            <h3>SAMS</h3>
+            <div class="department-name">San Andreas Medical Services</div>
+            <p>
+              Departamento de servicios médicos y emergencias
+              de San Andreas, independiente del SAPD.
+            </p>
+
+            <div class="features-title">Sistemas SAMS previstos</div>
+            <div class="feature-list">
+              <div class="feature"><span>🩺</span>Personal médico</div>
+              <div class="feature"><span>🚨</span>Servicios de emergencia</div>
+              <div class="feature"><span>🏥</span>Hospital y pacientes</div>
+              <div class="feature"><span>📋</span>Informes médicos IC</div>
+              <div class="feature"><span>🎖️</span>Rangos médicos</div>
+              <div class="feature"><span>🕒</span>Turnos de servicio</div>
+            </div>
+
+            <span class="card-link">Panel SAMS · Próximamente</span>
           </article>
 
           <article class="card" id="solicitudes">
@@ -607,46 +629,48 @@
               Gestión de solicitudes CK, PKT y otros trámites
               de la comunidad.
             </p>
-            <span class="card-link">Sistema en preparación ↗</span>
+            <span class="card-link">Sistema en preparación</span>
           </article>
 
           <article class="card" id="normativa-card">
             <div class="card-icon">⚖️</div>
             <h3>Leyes y normativa</h3>
             <p>
-              Leyes IC, normas generales y código penal de la ciudad.
+              Leyes IC, normas generales y procedimientos oficiales
+              de la ciudad.
             </p>
-            <a class="card-link" href="#normas">Consultar información ↗</a>
+            <a class="card-link" href="#normas">Consultar normativa ↗</a>
           </article>
 
-          <article class="card">
+          <article class="card" id="economia">
             <div class="card-icon">💰</div>
             <h3>Economía y trabajos</h3>
             <p>
-              Futuros sistemas de dinero, empleos,
-              rangos, turnos y salarios.
+              Futuros sistemas de dinero, empleos, salarios,
+              rangos y turnos de trabajo.
             </p>
             <span class="card-link">Sistema futuro</span>
           </article>
 
-          <article class="card">
-            <div class="card-icon">🚘</div>
-            <h3>Vehículos</h3>
-            <p>
-              Administración de vehículos y propiedades
-              de los personajes de roleplay.
-            </p>
-            <span class="card-link">Sistema futuro</span>
-          </article>
-
-          <article class="card">
+          <!-- Empresas y organizaciones se gestionan por separado. -->
+          <article class="card" id="empresas">
             <div class="card-icon">🏢</div>
-            <h3>Departamentos y empresas</h3>
+            <h3>Empresas</h3>
             <p>
-              Futuros sistemas para EMS, mecánicos,
-              bandas, negocios, Gobierno y Staff.
+              Negocios de la ciudad, propietarios, empleados,
+              cargos y futura gestión económica.
             </p>
-            <span class="card-link">Sistema futuro</span>
+            <span class="card-link">Sistema de empresas · Futuro</span>
+          </article>
+
+          <article class="card" id="organizaciones">
+            <div class="card-icon">🤝</div>
+            <h3>Organizaciones</h3>
+            <p>
+              Gestión de organizaciones de la ciudad,
+              miembros, jerarquías y otros datos de roleplay.
+            </p>
+            <span class="card-link">Sistema de organizaciones · Futuro</span>
           </article>
         </div>
       </div>

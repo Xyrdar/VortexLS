@@ -505,10 +505,107 @@
         transition: none !important;
       }
     }
+
+    /* Pantalla de acceso: el contenido original no se modifica. */
+    body.auth-checking > *:not(#vortex-auth-gate) {
+      visibility: hidden !important;
+    }
+
+    #vortex-auth-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(227,38,54,.23), transparent 60%),
+        linear-gradient(180deg, #151216 0%, #0a0a0d 100%);
+      color: #f7f5f5;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
+
+    #vortex-auth-gate[hidden] {
+      display: none !important;
+    }
+
+    #vortex-auth-gate .auth-panel {
+      width: min(420px, 100%);
+      padding: 36px 28px;
+      border: 1px solid #30252a;
+      border-top: 2px solid #e32636;
+      border-radius: 12px;
+      background: #131318;
+    }
+
+    #vortex-auth-gate .auth-brand {
+      margin: 0 0 16px;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    #vortex-auth-gate .auth-brand span {
+      color: #e32636;
+    }
+
+    #vortex-auth-gate .auth-message {
+      margin: 0 0 24px;
+      color: #aaa7b0;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    #vortex-auth-gate .auth-button {
+      display: inline-block;
+      padding: 13px 18px;
+      border: 1px solid #e32636;
+      border-radius: 7px;
+      background: #e32636;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    #vortex-auth-gate .auth-button:hover {
+      background: #ff394b;
+      border-color: #ff394b;
+    }
+
+    #vortex-auth-gate .auth-error {
+      margin-top: 18px;
+      color: #ff9ca5;
+      font-size: 13px;
+      line-height: 1.6;
+    }
   </style>
 </head>
 
-<body>
+<body class="auth-checking">
+  <div id="vortex-auth-gate" role="dialog" aria-modal="true"
+       aria-labelledby="vortex-auth-title">
+    <div class="auth-panel">
+      <div class="auth-brand" id="vortex-auth-title">
+        VORTEX <span>LS</span>
+      </div>
+      <p class="auth-message" id="vortex-auth-message">
+        Comprueba tu sesión para continuar.
+      </p>
+      <a class="auth-button" id="vortex-login-button"
+         href="https://vortex-backend-brtz.onrender.com/login">
+        Iniciar sesión con Discord
+      </a>
+      <div class="auth-error" id="vortex-auth-error" hidden></div>
+      <button class="auth-button" id="vortex-retry-button" type="button" hidden>
+        Reintentar
+      </button>
+    </div>
+  </div>
+
   <header class="navbar">
     <a class="brand" href="#inicio" aria-label="Vortex LS, inicio">
       VORTEX <span>LS</span>
@@ -582,7 +679,6 @@
         </div>
 
         <div class="grid">
-
           <!-- SAPD -->
           <article class="card department" id="sapd">
             <div class="card-icon">🛡️</div>
@@ -689,7 +785,6 @@
             </p>
             <span class="card-link">Sistema de empresas · Futuro</span>
           </article>
-
         </div>
       </div>
     </section>
@@ -722,5 +817,91 @@
     <div>© <strong>Vortex LS</strong> · Comunidad de GTA V Roleplay PS5</div>
     <div>Plataforma oficial</div>
   </footer>
+
+  <script>
+    (() => {
+      const API = "https://vortex-backend-brtz.onrender.com";
+      const gate = document.getElementById("vortex-auth-gate");
+      const message = document.getElementById("vortex-auth-message");
+      const loginButton = document.getElementById("vortex-login-button");
+      const error = document.getElementById("vortex-auth-error");
+      const retryButton = document.getElementById("vortex-retry-button");
+
+      document.body.classList.add("auth-checking");
+
+      function showLogin(text) {
+        gate.hidden = false;
+        document.body.classList.add("auth-checking");
+        message.textContent = text;
+        loginButton.hidden = false;
+        retryButton.hidden = true;
+        error.hidden = true;
+        error.textContent = "";
+      }
+
+      async function checkSession() {
+        gate.hidden = false;
+        message.textContent = "Comprobando sesión...";
+        loginButton.hidden = true;
+        retryButton.hidden = true;
+        error.hidden = true;
+        error.textContent = "";
+
+        try {
+          const response = await fetch(API + "/me", {
+            method: "GET",
+            credentials: "include",
+            cache: "no-store"
+          });
+
+          if (response.status === 401) {
+            showLogin("Inicia sesión con Discord para acceder a Vortex LS.");
+            return;
+          }
+
+          if (!response.ok) {
+            throw new Error("No se pudo comprobar la sesión.");
+          }
+
+          const data = await response.json();
+
+          if (data.logged_in !== true || !data.user) {
+            showLogin("Inicia sesión con Discord para acceder a Vortex LS.");
+            return;
+          }
+
+          gate.hidden = true;
+          document.body.classList.remove("auth-checking");
+
+          if (window.location.search) {
+            history.replaceState(
+              null,
+              "",
+              window.location.pathname + window.location.hash
+            );
+          }
+        } catch (err) {
+          showLogin("No se pudo verificar la sesión. Inténtalo de nuevo.");
+          loginButton.hidden = true;
+          error.textContent =
+            "Comprueba la conexión e inténtalo otra vez.";
+          error.hidden = false;
+          retryButton.hidden = false;
+        }
+      }
+
+      retryButton.addEventListener("click", checkSession);
+
+      const params = new URLSearchParams(window.location.search);
+
+      if (params.get("login") === "error") {
+        showLogin("No se pudo completar el inicio de sesión con Discord.");
+        error.textContent = "Vuelve a intentarlo más tarde.";
+        error.hidden = false;
+      } else {
+        checkSession();
+      }
+    })();
+  </script>
 </body>
 </html>
